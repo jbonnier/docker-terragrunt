@@ -1,0 +1,20 @@
+name: CI Workflow
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  ci:
+    name: Build Docker Image for CI
+    uses: ./.github/workflows/docker-build.yaml
+    with:
+      push_image: false
+      git_tag: 0.0.0
+      tf_version: ''
+      tg_version: ''
+      version_tag: ''
+    secrets:
+      DOCKER_USERNAME: ''
+      DOCKER_TOKEN: ''
